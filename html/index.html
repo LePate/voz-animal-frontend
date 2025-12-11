@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Voz Animal - Adopta una vida</title>
+    <link rel="icon" href="img/logo_voz_animal.png.jpg" type="image/png" />
+    <meta name="author" content="Voz Animal">
+    <meta name="description" content="Adopta, cuida y ama. Encuentra a tu nuevo mejor amigo en Voz Animal.">
+    <meta name="keywords"
+        content="adopción de mascotas, perros, gatos, refugio animal, cuidado de animales, Voz Animal">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/estadisticas.css">
+    <link rel="stylesheet" href="../css/header-auth.css">
+</head>
+
+<body>
+    <header class="cabecera">
+
+        <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+        <div class="header-login-container" id="headerLoginContainer">
+            <a href="login.html" class="btn-login">
+                <span class="btn-login-icon">👤</span>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+
+
+        <div class="fila-header flex-horizontal">
+            <div class="logo">
+                <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+            </div>
+
+            <div class="titulo">
+                <h1>Voz Animal</h1>
+                <p class="letras-espaciadas mayusculas"><strong>Adopta, cuida y ama.</strong></p>
+            </div>
+
+            <div class="audio">
+                <audio src="sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+            </div>
+        </div>
+
+        <div class="encabezado-redes">
+            <a href="https://facebook.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook">
+            </a>
+            <a href="https://youtube.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok">
+            </a>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+            <li><a href="adopciones.html">Adopciones</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="donaciones.html">Donaciones</a></li>
+            <li><a href="visitas.html">Visitas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+
+
+    <main class="contenido">
+
+        <section class="bienvenida seccion-con-imagen">
+            <div class="contenido-texto">
+                <h2 class="capitalize">Nuevas oportunidades para nuestros amigos de cuatro patas</h2>
+                <p class="letras-espaciadas">En Voz Animal, trabajamos cada día para rescatar, cuidar y encontrar
+                    hogares amorosos para perros y gatos abandonados. Ya hemos logrado más de <strong>5,000
+                        adopciones</strong> en todo el país.</p>
+                <p class="letras-espaciadas">Conoce a nuestros nuevos amigos en búsqueda de familia, y súmate tú también
+                    a esta gran causa.</p>
+                <a href="listadeAnimales.html" class="btn-accion">Ver Animales en Adopción</a>
+            </div>
+            <div class="contenido-imagen">
+                <img src="../img/perro_gato_bienvenida.jpg" alt="Perro y gato felices">
+            </div>
+        </section>
+
+
+        <section class="voluntariado seccion-con-imagen imagen-izquierda">
+            <div class="contenido-imagen">
+                <img src="../img/voluntarios_animales.jpg" alt="Voluntarios cuidando animales">
+            </div>
+            <div class="contenido-texto">
+                <h2 class="capitalize">Conviértete en voluntario</h2>
+                <p class="letras-espaciadas"><em>¿Amas a los animales?</em> Únete a nuestro equipo de voluntarios. Ayuda
+                    en el cuidado diario, campañas de esterilización, eventos de adopción y más.</p>
+                <p class="letras-espaciadas">Tu tiempo puede cambiar una vida. <a href="voluntariado.html">Haz clic aquí
+                        para registrarte</a>.</p>
+                <a href="voluntariado.html" class="btn-accion">Más Información sobre Voluntariado</a>
+            </div>
+        </section>
+
+
+        <section class="lista-animales">
+            <h2 class="titulo-adopciones">📊 Bienestar de Mascotas</h2>
+
+            <!-- 🐾 Tarjeta 1: Evaluación completa -->
+            <div class="tarjeta-mascota">
+                <h3>🐾 Benito</h3>
+                <label>Peso (kg):</label>
+                <input type="number" id="peso0" placeholder="Ej. 12">
+                <label>Horas jugadas hoy:</label>
+                <input type="number" id="juego0" placeholder="Ej. 3">
+                <button onclick="evaluarMascota(0)">Evaluar bienestar</button>
+                <div id="resultado0" class="resultado"></div>
+            </div>
+
+            <!-- 🐾 Tarjeta 2: Edades de Mascotas -->
+            <div class="tarjeta-mascota">
+                <h3>📈 Edades de Mascotas</h3>
+                <button onclick="mostrarEdades()">Ver edades</button>
+                <div id="tablaEdades" style="margin-top: 10px;"></div>
+                <div id="minMaxEdades" class="resultado"></div>
+            </div>
+
+            <!-- 🐾 Tarjeta 3: Comida por peso -->
+            <div class="tarjeta-mascota">
+                <h3>🍽️ Porción de Comida</h3>
+                <label>Peso (kg):</label>
+                <input type="number" id="pesoComida" placeholder="Ej. 10">
+                <button onclick="calcularComida()">Calcular comida</button>
+                <div id="resultado2" class="resultado"></div>
+            </div>
+
+            <!-- 🐾 Tarjeta 4: Horas de sueño -->
+            <div class="tarjeta-mascota">
+                <h3>😴 Estimación de Sueño</h3>
+                <label>Horas jugadas:</label>
+                <input type="number" id="horasJuego" placeholder="Ej. 4">
+                <button onclick="calcularSueno()">Calcular sueño</button>
+                <div id="resultado3" class="resultado"></div>
+            </div>
+        </section>
+
+
+
+
+
+        </section>
+
+
+
+
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Aliados y Recursos</h3>
+        <ul>
+            <li><a href="https://www.gob.pe/minagri" target="_blank">Ministerio de Agricultura</a></li>
+            <li><a href="https://www.senasa.gob.pe/" target="_blank">SENASA</a></li>
+            <li><a href="https://www.facebook.com/AnimalesLibresDeCrueldadYAbandonoPeru/" target="_blank">Animales
+                    Libres</a></li>
+            <li><a href="https://www.reddeanimalistasperu.org/refugios" target="_blank">Refugios Perú</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+        <p>SEDE CENTRAL.</p>
+        <p>Dirección: Av. Esperanza 555, Huancayo, Perú.</p>
+        <p>Teléfonos: (01) 0000000 - (01) 0000000.</p>
+    </footer>
+    <script src="../js/header-auth.js"></script>
+     <script src="../js/bienestar.js"></script>
+</body>
+
+</html>

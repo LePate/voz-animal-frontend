@@ -1,0 +1,47 @@
+.lista-animales {
+  display: grid;
+  gap: 20px;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
+.tarjeta-mascota {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tarjeta-mascota h3 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.tarjeta-mascota input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.tarjeta-mascota button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tarjeta-mascota button:hover {
+  background-color: #0b7dda;
+}
+
+.resultado {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #333;
+}

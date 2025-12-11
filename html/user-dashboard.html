@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Panel - Voz Animal</title>
+  <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <span>🐾</span>
+      <span>VOZ ANIMAL</span>
+    </div>
+    <div class="navbar-user">
+      <div class="user-info">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <div>
+          <div style="font-weight: 600;" id="userName">Usuario</div>
+          <div style="font-size: 0.85rem; opacity: 0.9;" id="userEmail">email@ejemplo.com</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <!-- WELCOME SECTION -->
+    <div class="welcome-section">
+      <h1 id="welcomeMessage">¡Bienvenido/a!</h1>
+      <p>Explora los animales disponibles y gestiona tus solicitudes de adopción</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value" id="statSolicitudes">0</div>
+        <div class="stat-label">Solicitudes Enviadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value" id="statAprobadas">0</div>
+        <div class="stat-label">Solicitudes Aprobadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🐾</div>
+        <div class="stat-value" id="statAdopciones">0</div>
+        <div class="stat-label">Adopciones Completadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-value" id="statDonaciones">$0</div>
+        <div class="stat-label">Total Donado</div>
+      </div>
+    </div>
+
+    <!-- ANIMALES DISPONIBLES -->
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">Animales Disponibles para Adopción</h2>
+      </div>
+      
+      <!-- FILTROS -->
+      <div class="filter-buttons">
+        <button class="btn-filter active" onclick="filterAnimals('todos')">Todos</button>
+        <button class="btn-filter" onclick="filterAnimals('perro')">🐕 Perros</button>
+        <button class="btn-filter" onclick="filterAnimals('gato')">🐈 Gatos</button>
+        <button class="btn-filter" onclick="filterAnimals('pequeño')">Pequeños</button>
+        <button class="btn-filter" onclick="filterAnimals('mediano')">Medianos</button>
+        <button class="btn-filter" onclick="filterAnimals('grande')">Grandes</button>
+      </div>
+
+      <div id="animalesContainer" class="loading">
+        <div class="spinner"></div>
+        <p>Cargando animales...</p>
+      </div>
+    </div>
+
+    <!-- MIS SOLICITUDES -->
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">Mis Solicitudes de Adopción</h2>
+      </div>
+      <div id="solicitudesContainer" class="loading">
+        <div class="spinner"></div>
+        <p>Cargando solicitudes...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DETALLE ANIMAL -->
+  <div id="modalAnimal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="btn-close" onclick="closeModal()">&times;</button>
+        <div class="modal-animal-icon" id="modalAnimalIcon">🐕</div>
+        <div class="modal-animal-name" id="modalAnimalName">Nombre</div>
+        <div class="modal-animal-subtitle" id="modalAnimalSubtitle">Raza • Sexo</div>
+      </div>
+
+      <div class="modal-body">
+        <div class="detail-grid" id="modalDetailGrid">
+          <!-- Se llenará dinámicamente -->
+        </div>
+
+        <div class="description-section" id="modalDescription">
+          <!-- Se llenará dinámicamente -->
+        </div>
+
+        <div id="modalAdoptForm" style="display: none;">
+          <hr style="margin: 2rem 0; border: none; border-top: 2px solid #f0f0f0;">
+          
+          <h3 style="margin-bottom: 1rem; color: #333;">Solicitar Adopción</h3>
+          
+          <div id="formAlert" style="display: none;"></div>
+
+          <form id="formAdopcion" onsubmit="submitAdopcion(event)">
+            <div class="form-group">
+              <label class="form-label">¿Por qué quieres adoptar a este animal? *</label>
+              <textarea id="motivoAdopcion" class="form-textarea" required 
+                placeholder="Cuéntanos por qué quieres adoptar y cómo cuidarás de este animal..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">¿Tienes experiencia con mascotas?</label>
+              <textarea id="experiencia" class="form-textarea" 
+                placeholder="Describe tu experiencia previa con mascotas..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Información adicional</label>
+              <textarea id="infoAdicional" class="form-textarea" 
+                placeholder="Cualquier otra información que quieras compartir..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnSubmitAdopcion">
+              Enviar Solicitud de Adopción
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/user/user-dashboard.js"></script>
+</body>
+</html>

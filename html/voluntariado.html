@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Voz Animal - Nuestros Peludos</title>
+    <link rel="icon" href="img/logo_voz_animal.png.jpg" type="image/png" />
+    <meta name="author" content="Voz Animal">
+    <meta name="description"
+        content="Conoce a los animales que ya encontraron un hogar y a aquellos que esperan ansiosamente una familia.">
+    <meta name="keywords"
+        content="adopción de mascotas, perros, gatos, refugio animal, animales adoptados, buscar hogar, Voz Animal">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/voluntariado.css"> <!-- Hoja de estilo para este formulario -->
+    <link rel="stylesheet" href="../css/header-auth.css">
+
+</head>
+
+<body>
+    <header class="cabecera">
+        <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+        <div class="header-login-container" id="headerLoginContainer">
+            <a href="login.html" class="btn-login">
+                <span class="btn-login-icon">👤</span>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+        <div class="fila-header flex-horizontal">
+            <div class="logo">
+                <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+            </div>
+
+            <div class="titulo">
+                <h1>Voz Animal</h1>
+                <p class="letras-espaciadas mayusculas"><strong>Adopta, cuida y ama.</strong></p>
+            </div>
+
+            <div class="audio">
+                <audio src="sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+            </div>
+        </div>
+
+        <div class="encabezado-redes">
+            <a href="https://facebook.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook"></a>
+            <a href="https://youtube.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube"></a>
+            <a href="https://instagram.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok"></a>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+            <li><a href="adopciones.html">Adopciones</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="donaciones.html">Donaciones</a></li>
+            <li><a href="visitas.html">Visitas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main class="voluntariado-container">
+        <article class="titulo-voluntariado">
+            <h2 class="titulo-principal">Sé parte de los voluntariados</h2>
+            <p class="subtitulo-form">Inscríbete aquí:</p>
+        </article>
+
+        <form action="#" class="form-voluntariado">
+            <label for="nombre">Nombre y apellidos:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="telefono">Número de celular:</label>
+            <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9}" placeholder="Ej: 987654321">
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label>Estado:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="estado" value="estudiante" required> Estudiante</label>
+                <label><input type="radio" name="estado" value="profesional" required> Profesional</label>
+            </div>
+
+            <label for="profesion">Profesión o carrera que estudia:</label>
+            <input type="text" id="profesion" name="profesion" required>
+
+            <label for="distrito">Distrito de residencia:</label>
+            <input type="text" id="distrito" name="distrito" required>
+
+            <label for="disponibilidad">¿Cuál es tu disponibilidad?</label>
+            <select id="disponibilidad" name="disponibilidad" required>
+                <option value="">Seleccione una opción</option>
+                <option value="lunes-viernes">De lunes a viernes</option>
+                <option value="fines-de-semana">Fines de semana</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <label for="preferencia">¿Que animal prefieres?</label>
+            <select id="animalFaborito" name="animalFaborito" required>
+                <option value="">Seleccione que prefieres</option>
+                <option value="Gatos">Gatos</option>
+                <option value="Perros">Perros</option>
+                <option value="Ambos">Ambos</option>
+            </select>
+
+            <button type="submit">Enviar formulario</button>
+        </form>
+    </main>
+
+    <aside class="aliados">
+        <h2>Aliados y Recursos</h2>
+        <ul>
+            <li><a href="#">Ministerio de Agricultura</a></li>
+            <li><a href="#">SENASA</a></li>
+            <li><a href="#">Animales Libres</a></li>
+            <li><a href="#">Refugios Perú</a></li>
+        </ul>
+    </aside>
+
+
+    <footer class="footer-contacto">
+        <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+        <p>Sede Central: Av. Esperanza 555, Huancayo, Perú.</p>
+        <p>Teléfonos: (01) 0000000 - (01) 0000000.</p>
+    </footer>
+
+
+    <!-- Cargar jsPDF desde CDN (REQUIERE esta versión exacta para funcionar con window.jspdf) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Tu archivo JavaScript separado -->
+    <script src="../js/voluntariado.js"></script>
+
+      <script src="../js/header-auth.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+.contenido-lista-animales {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.listado-principal h1 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #2c3e50;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.animales-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.animal-card {
+    background-color: #fff;
+    border: 1px solid #dce1e6;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    position: relative;
+}
+
+.animal-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.12);
+}
+
+.animal-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.animal-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    font-size: 1.7em;
+    text-align: center;
+    font-weight: 600;
+}
+
+.animal-card p {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+.animal-card p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.btn-ver-mas, .btn-adoptame-lista {
+    display: block;
+    background-color: #5cb85c;
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto;
+}
+
+.btn-ver-mas:hover, .btn-adoptame-lista:hover {
+    background-color: #4cae4c;
+    transform: translateY(-2px);
+}
+
+.estado-adopcion.en-adopcion-lista {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    background-color: #5bc0de;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .contenido-lista-animales {
+        padding: 20px 15px;
+    }
+    .listado-principal h1 {
+        font-size: 2.1em;
+        margin-bottom: 25px;
+    }
+    .animales-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+    .animal-card img {
+        height: 220px;
+    }
+    .animal-card h3 {
+        font-size: 1.5em;
+    }
+    .animal-card p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .animal-card img {
+        height: 200px;
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+/* ===================================
+   HEADER AUTH - OPCIÓN ALTERNATIVA
+   Botón en su propia fila debajo del header
+   Archivo: css/header-auth.css
+   =================================== */
+
+/* Contenedor del botón de login - En su propia fila */
+.header-login-container {
+    background: #f8f9fa;
+    padding: 10px;
+    text-align: right;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Botón de Iniciar Sesión */
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    color: white;
+}
+
+.btn-login-icon {
+    font-size: 1.2rem;
+}
+
+/* Información de usuario logueado */
+.user-info-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.user-name-header {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Botón Mi Panel */
+.btn-dashboard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-dashboard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+/* Botón Cerrar Sesión */
+.btn-logout-header {
+    background: #dc3545;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-logout-header:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-login-container {
+        text-align: center;
+    }
+
+    .btn-login {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+
+    .user-info-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .user-name-header {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-info-header {
+        padding: 6px 10px;
+    }
+
+    .btn-dashboard,
+    .btn-logout-header {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    .user-name-header {
+        font-size: 0.8rem;
+    }
+}

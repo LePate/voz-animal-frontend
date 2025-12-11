@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Voz Animal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-brand {
+            padding: 0 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .menu-item {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: white;
+        }
+
+        .menu-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-left-color: white;
+        }
+
+        .menu-icon {
+            font-size: 1.3rem;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 2rem;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-title {
+            font-size: 1.8rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .navbar-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn-logout {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-info h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            opacity: 0.7;
+        }
+
+        /* SECTION */
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            background: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-disponible {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-adoptado {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .badge-reservado {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-aprobada {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-rechazada {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-activo {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-inactivo {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* BUTTONS */
+        .btn-sm {
+            padding: 6px 15px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 3px;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .btn-edit:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #138496;
+            transform: scale(1.05);
+        }
+
+        .btn-approve {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .btn-reject {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        /* LOADING */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .btn-close {
+            background: #f0f0f0;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close:hover {
+            background: #dc3545;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <span>🐾</span>
+            <span>VOZ ANIMAL</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item active" onclick="showSection('dashboard')">
+                <span class="menu-icon">📊</span>
+                <span>Dashboard</span>
+            </li>
+            <li class="menu-item" onclick="showSection('animales')">
+                <span class="menu-icon">🐕</span>
+                <span>Gestionar Animales</span>
+            </li>
+            <li class="menu-item" onclick="showSection('solicitudes')">
+                <span class="menu-icon">📋</span>
+                <span>Solicitudes</span>
+            </li>
+            <li class="menu-item" onclick="showSection('adopciones')">
+                <span class="menu-icon">✅</span>
+                <span>Adopciones</span>
+            </li>
+            <li class="menu-item" onclick="showSection('usuarios')">
+                <span class="menu-icon">👥</span>
+                <span>Usuarios</span>
+            </li>
+            <li class="menu-item" onclick="showSection('donaciones')">
+                <span class="menu-icon">💰</span>
+                <span>Donaciones</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div>
+                <h1 class="navbar-title" id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="navbar-user">
+                <div style="text-align: right;">
+                    <div style="font-weight: 600; color: #333;" id="adminName">Admin</div>
+                    <div style="font-size: 0.85rem; color: #666;">Administrador</div>
+                </div>
+                <div class="user-avatar" id="adminAvatar">A</div>
+                <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </nav>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard" class="section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 id="statTotalAnimales">0</h3>
+                        <p>Total Animales</p>
+                    </div>
+                    <div class="stat-icon">🐾</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 id="statDisponibles">0</h3>
+                        <p>Disponibles</p>
+                    </div>
+                    <div class="stat-icon">🐕</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 id="statAdoptados">0</h3>
+                        <p>Adoptados</p>
+                    </div>
+                    <div class="stat-icon">✅</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 id="statSolicitudes">0</h3>
+                        <p>Solicitudes Pendientes</p>
+                    </div>
+                    <div class="stat-icon">📋</div>
+                </div>
+            </div>
+
+            <!-- Actividad Reciente -->
+            <div
+                style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <h2 style="margin-bottom: 1.5rem; color: #333;">📊 Estadísticas Generales</h2>
+                <div class="loading" id="dashboardLoading">
+                    <div class="spinner"></div>
+                    <p>Cargando estadísticas...</p>
+                </div>
+                <div id="dashboardContent" style="display: none;">
+                    <p style="color: #666; line-height: 1.8;">
+                        Sistema funcionando correctamente. Utiliza el menú lateral para gestionar animales, solicitudes
+                        y usuarios.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANIMALES SECTION -->
+        <div id="animales" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Gestión de Animales</h2>
+                <button class="btn-primary" onclick="openModalAnimal()">
+                    <span>➕</span>
+                    <span>Agregar Animal</span>
+                </button>
+            </div>egar animal')">
+            <span>➕</span>
+            <span>Agregar Animal</span>
+            </button>
+        </div>
+        <div id="animalesContainer" class="loading">
+            <div class="spinner"></div>
+            <p>Cargando animales...</p>
+        </div>
+        </div>
+
+        <!-- SOLICITUDES SECTION -->
+        <div id="solicitudes" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Solicitudes de Adopción</h2>
+            </div>
+            <div id="solicitudesContainer" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando solicitudes...</p>
+            </div>
+        </div>
+
+        <!-- ADOPCIONES SECTION -->
+        <div id="adopciones" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Adopciones Completadas</h2>
+            </div>
+            <div id="adopcionesContainer" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando adopciones...</p>
+            </div>
+        </div>
+
+        <!-- USUARIOS SECTION -->
+        <div id="usuarios" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Gestión de Usuarios</h2>
+            </div>
+            <div id="usuariosContainer" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando usuarios...</p>
+            </div>
+        </div>
+
+        <!-- DONACIONES SECTION -->
+        <div id="donaciones" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Donaciones Recibidas</h2>
+            </div>
+            <div id="donacionesContainer" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando donaciones...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL AGREGAR/EDITAR ANIMAL -->
+    <div id="modalAnimal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalAnimalTitle">Agregar Animal</h3>
+                <button class="btn-close" onclick="closeModalAnimal()">×</button>
+            </div>
+
+            <div id="modalAlert" class="alert" style="display: none;"></div>
+
+            <form id="formAnimal" onsubmit="submitAnimal(event)">
+                <input type="hidden" id="animalId" value="">
+
+                <div class="form-group">
+                    <label class="form-label">Nombre *</label>
+                    <input type="text" id="animalNombre" class="form-input" required placeholder="Ej: Max">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Tipo *</label>
+                        <select id="animalTipo" class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Sexo *</label>
+                        <select id="animalSexo" class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Raza</label>
+                        <input type="text" id="animalRaza" class="form-input" placeholder="Ej: Labrador">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tamaño *</label>
+                        <select id="animalTamanio" class="form-select" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="pequeño">Pequeño</option>
+                            <option value="mediano">Mediano</option>
+                            <option value="grande">Grande</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Edad (años)</label>
+                        <input type="number" id="animalEdadAnos" class="form-input" min="0" max="20" placeholder="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Edad (meses)</label>
+                        <input type="number" id="animalEdadMeses" class="form-input" min="0" max="11" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Peso (kg)</label>
+                        <input type="number" id="animalPeso" class="form-input" step="0.1" min="0" placeholder="0.0">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Color</label>
+                        <input type="text" id="animalColor" class="form-input" placeholder="Ej: Dorado">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Descripción</label>
+                    <textarea id="animalDescripcion" class="form-textarea"
+                        placeholder="Breve descripción del animal..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Características</label>
+                    <textarea id="animalCaracteristicas" class="form-textarea"
+                        placeholder="Ej: Juguetón, sociable, entrenado..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Estado de Salud</label>
+                    <textarea id="animalEstadoSalud" class="form-textarea"
+                        placeholder="Información sobre vacunas, esterilización, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Estado *</label>
+                    <select id="animalEstado" class="form-select" required>
+                        <option value="disponible">Disponible</option>
+                        <option value="reservado">Reservado</option>
+                        <option value="adoptado">Adoptado</option>
+                        <option value="no_disponible">No Disponible</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnSubmitAnimal">
+                    Guardar Animal
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let currentUser = null;
+        let authToken = null;
+
+        // Verificar autenticación
+        window.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+            if (!token || !user.id) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Verificar que sea admin
+            if (user.rol !== 'admin') {
+                alert('Acceso denegado. Solo administradores pueden acceder.');
+                window.location.href = 'user-dashboard.html';
+                return;
+            }
+
+            currentUser = user;
+            authToken = token;
+
+            // Actualizar UI
+            document.getElementById('adminName').textContent = user.nombre;
+            document.getElementById('adminAvatar').textContent = user.nombre.charAt(0).toUpperCase();
+
+            // Cargar datos iniciales
+            await loadDashboardStats();
+        });
+
+        // Cambiar sección
+        function showSection(sectionName) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+
+            // Mostrar sección seleccionada
+            document.getElementById(sectionName).classList.add('active');
+            event.target.closest('.menu-item').classList.add('active');
+
+            // Actualizar título
+            const titles = {
+                'dashboard': 'Dashboard',
+                'animales': 'Gestión de Animales',
+                'solicitudes': 'Solicitudes de Adopción',
+                'adopciones': 'Adopciones Completadas',
+                'usuarios': 'Gestión de Usuarios',
+                'donaciones': 'Donaciones Recibidas'
+            };
+            document.getElementById('pageTitle').textContent = titles[sectionName];
+
+            // Cargar datos según la sección
+            switch (sectionName) {
+                case 'animales':
+                    loadAnimales();
+                    break;
+                case 'solicitudes':
+                    loadSolicitudes();
+                    break;
+                case 'adopciones':
+                    loadAdopciones();
+                    break;
+                case 'usuarios':
+                    loadUsuarios();
+                    break;
+                case 'donaciones':
+                    loadDonaciones();
+                    break;
+            }
+        }
+
+        // Cargar estadísticas del dashboard
+        async function loadDashboardStats() {
+            try {
+                const response = await fetch(`${API_URL}/animales/stats`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.data;
+                    document.getElementById('statTotalAnimales').textContent = stats.total || 0;
+                    document.getElementById('statDisponibles').textContent = stats.disponibles || 0;
+                    document.getElementById('statAdoptados').textContent = stats.adoptados || 0;
+                }
+
+                // Cargar solicitudes pendientes
+                const solResponse = await fetch(`${API_URL}/solicitudes`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const solData = await solResponse.json();
+
+                if (solData.success) {
+                    const pendientes = solData.data.filter(s => s.estado === 'pendiente').length;
+                    document.getElementById('statSolicitudes').textContent = pendientes;
+                }
+
+                // Mostrar contenido
+                document.getElementById('dashboardLoading').style.display = 'none';
+                document.getElementById('dashboardContent').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error al cargar estadísticas:', error);
+            }
+        }
+
+        // Cargar animales
+        async function loadAnimales() {
+            try {
+                const response = await fetch(`${API_URL}/animales`);
+                const data = await response.json();
+
+                const container = document.getElementById('animalesContainer');
+
+                if (data.success && data.data.length > 0) {
+                    container.className = 'table-container';
+                    container.innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Raza</th>
+                  <th>Edad</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.data.map(animal => `
+                  <tr>
+                    <td><strong>#${animal.id_animal}</strong></td>
+                    <td>${animal.nombre}</td>
+                    <td>${animal.tipo === 'perro' ? '🐕 Perro' : '🐈 Gato'}</td>
+                    <td>${animal.raza || 'Mixto'}</td>
+                    <td>${animal.edad_anos || 0}a ${animal.edad_meses || 0}m</td>
+                    <td><span class="badge badge-${animal.estado}">${animal.estado}</span></td>
+                    <td>
+                      <button class="btn-sm btn-view" onclick="verAnimal(${animal.id_animal})">Ver</button>
+                      <button class="btn-sm btn-edit" onclick="editarAnimal(${animal.id_animal})">Editar</button>
+                      <button class="btn-sm btn-delete" onclick="eliminarAnimal(${animal.id_animal})">Eliminar</button>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+                } else {
+                    container.className = 'empty-state';
+                    container.innerHTML = `
+            <div class="empty-icon">🐾</div>
+            <p>No hay animales registrados</p>
+          `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('animalesContainer').innerHTML = '<p style="color:red;text-align:center;">Error al cargar</p>';
+            }
+        }
+
+        // Cargar solicitudes
+        async function loadSolicitudes() {
+            try {
+                const response = await fetch(`${API_URL}/solicitudes`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const data = await response.json();
+
+                const container = document.getElementById('solicitudesContainer');
+
+                if (data.success && data.data.length > 0) {
+                    container.className = 'table-container';
+                    container.innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Usuario</th>
+                  <th>Animal</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.data.map(sol => `
+                  <tr>
+                    <td><strong>#${sol.id_solicitud}</strong></td>
+                    <td>${sol.nombre_usuario || 'Usuario'}</td>
+                    <td>${sol.nombre_animal || 'Animal'}</td>
+                    <td>${new Date(sol.fecha_solicitud).toLocaleDateString()}</td>
+                    <td><span class="badge badge-${sol.estado}">${sol.estado}</span></td>
+                    <td>
+                      <button class="btn-sm btn-view" onclick="verSolicitud(${sol.id_solicitud})">Ver</button>
+                      ${sol.estado === 'pendiente' ? `
+                        <button class="btn-sm btn-approve" onclick="aprobarSolicitud(${sol.id_solicitud})">Aprobar</button>
+                        <button class="btn-sm btn-reject" onclick="rechazarSolicitud(${sol.id_solicitud})">Rechazar</button>
+                      ` : ''}
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
+                } else {
+                    container.className = 'empty-state';
+                    container.innerHTML = `<div class="empty-icon">📋</div><p>No hay solicitudes</p>`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Cargar adopciones
+        async function loadAdopciones() {
+            document.getElementById('adopcionesContainer').className = 'empty-state';
+            document.getElementById('adopcionesContainer').innerHTML = `
+        <div class="empty-icon">✅</div>
+        <p>Funcionalidad en desarrollo</p>
+      `;
+        }
+
+        // Cargar usuarios
+        async function loadUsuarios() {
+            document.getElementById('usuariosContainer').className = 'empty-state';
+            document.getElementById('usuariosContainer').innerHTML = `
+        <div class="empty-icon">👥</div>
+        <p>Funcionalidad en desarrollo</p>
+      `;
+        }
+
+        // Cargar donaciones
+        async function loadDonaciones() {
+            document.getElementById('donacionesContainer').className = 'empty-state';
+            document.getElementById('donacionesContainer').innerHTML = `
+        <div class="empty-icon">💰</div>
+        <p>Funcionalidad en desarrollo</p>
+      `;
+        }
+
+        // Funciones de acciones
+        function verAnimal(id) { alert(`Ver animal ID: ${id}`); }
+
+        function editarAnimal(id) {
+            openModalAnimal(id);
+        }
+
+        async function eliminarAnimal(id) {
+            if (!confirm('¿Estás seguro de eliminar este animal?')) return;
+
+            try {
+                const response = await fetch(`${API_URL}/animales/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Animal eliminado exitosamente');
+                    loadAnimales();
+                    loadDashboardStats();
+                } else {
+                    alert(data.message || 'Error al eliminar');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al eliminar animal');
+            }
+        }
+
+        // Modal de Animal
+        function openModalAnimal(id = null) {
+            document.getElementById('modalAnimal').classList.add('show');
+            document.getElementById('formAnimal').reset();
+            document.getElementById('modalAlert').style.display = 'none';
+
+            if (id) {
+                document.getElementById('modalAnimalTitle').textContent = 'Editar Animal';
+                document.getElementById('btnSubmitAnimal').textContent = 'Actualizar Animal';
+                cargarDatosAnimal(id);
+            } else {
+                document.getElementById('modalAnimalTitle').textContent = 'Agregar Animal';
+                document.getElementById('btnSubmitAnimal').textContent = 'Guardar Animal';
+                document.getElementById('animalId').value = '';
+            }
+        }
+
+        function closeModalAnimal() {
+            document.getElementById('modalAnimal').classList.remove('show');
+        }
+
+        async function cargarDatosAnimal(id) {
+            try {
+                const response = await fetch(`${API_URL}/animales/${id}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const animal = data.data;
+                    document.getElementById('animalId').value = animal.id_animal;
+                    document.getElementById('animalNombre').value = animal.nombre;
+                    document.getElementById('animalTipo').value = animal.tipo;
+                    document.getElementById('animalSexo').value = animal.sexo;
+                    document.getElementById('animalRaza').value = animal.raza || '';
+                    document.getElementById('animalTamanio').value = animal.tamanio;
+                    document.getElementById('animalEdadAnos').value = animal.edad_anos || 0;
+                    document.getElementById('animalEdadMeses').value = animal.edad_meses || 0;
+                    document.getElementById('animalPeso').value = animal.peso || '';
+                    document.getElementById('animalColor').value = animal.color || '';
+                    document.getElementById('animalDescripcion').value = animal.descripcion || '';
+                    document.getElementById('animalCaracteristicas').value = animal.caracteristicas || '';
+                    document.getElementById('animalEstadoSalud').value = animal.estado_salud || '';
+                    document.getElementById('animalEstado').value = animal.estado;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cargar datos del animal');
+            }
+        }
+
+        async function submitAnimal(event) {
+            event.preventDefault();
+
+            const id = document.getElementById('animalId').value;
+            const btnSubmit = document.getElementById('btnSubmitAnimal');
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'Guardando...';
+
+            const animalData = {
+                nombre: document.getElementById('animalNombre').value,
+                tipo: document.getElementById('animalTipo').value,
+                sexo: document.getElementById('animalSexo').value,
+                raza: document.getElementById('animalRaza').value || null,
+                tamanio: document.getElementById('animalTamanio').value,
+                edad_anos: parseInt(document.getElementById('animalEdadAnos').value) || 0,
+                edad_meses: parseInt(document.getElementById('animalEdadMeses').value) || 0,
+                peso: parseFloat(document.getElementById('animalPeso').value) || null,
+                color: document.getElementById('animalColor').value || null,
+                descripcion: document.getElementById('animalDescripcion').value || null,
+                caracteristicas: document.getElementById('animalCaracteristicas').value || null,
+                estado_salud: document.getElementById('animalEstadoSalud').value || null,
+                estado: document.getElementById('animalEstado').value
+            };
+
+            try {
+                const url = id ? `${API_URL}/animales/${id}` : `${API_URL}/animales`;
+                const method = id ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(animalData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showModalAlert('success', id ? 'Animal actualizado exitosamente' : 'Animal agregado exitosamente');
+
+                    setTimeout(() => {
+                        closeModalAnimal();
+                        loadAnimales();
+                        loadDashboardStats();
+                    }, 1500);
+                } else {
+                    showModalAlert('error', data.message || 'Error al guardar animal');
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = id ? 'Actualizar Animal' : 'Guardar Animal';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showModalAlert('error', 'Error al guardar animal');
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = id ? 'Actualizar Animal' : 'Guardar Animal';
+            }
+        }
+
+        function showModalAlert(type, message) {
+            const alert = document.getElementById('modalAlert');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.display = 'block';
+        }
+
+        // Funciones para solicitudes
+        function verSolicitud(id) { alert(`Ver solicitud ID: ${id}`); }
+
+        async function aprobarSolicitud(id) {
+            if (!confirm('¿Aprobar esta solicitud de adopción?')) return;
+
+            try {
+                const response = await fetch(`${API_URL}/solicitudes/${id}/estado`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ estado: 'aprobada' })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Solicitud aprobada exitosamente');
+                    loadSolicitudes();
+                    loadDashboardStats();
+                } else {
+                    alert(data.message || 'Error al aprobar solicitud');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al aprobar solicitud');
+            }
+        }
+
+        async function rechazarSolicitud(id) {
+            const motivo = prompt('Motivo del rechazo (opcional):');
+            if (motivo === null) return;
+
+            try {
+                const response = await fetch(`${API_URL}/solicitudes/${id}/estado`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({
+                        estado: 'rechazada',
+                        motivo_rechazo: motivo
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Solicitud rechazada');
+                    loadSolicitudes();
+                    loadDashboardStats();
+                } else {
+                    alert(data.message || 'Error al rechazar solicitud');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al rechazar solicitud');
+            }
+        }
+
+        // Cerrar sesión
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="../js/header-auth.js"></script>
+
+</body>
+
+</html>

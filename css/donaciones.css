@@ -1,0 +1,25 @@
+/* donaciones.css */
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.seccion {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+h5 {
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+#costoTotal {
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: #e9ecef;
+}

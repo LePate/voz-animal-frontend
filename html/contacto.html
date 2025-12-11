@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto - Voz Animal</title>
+    <link rel="icon" href="../img/logo_voz_animal.png.jpg" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contáctanos para adoptar, ayudar o colaborar con Voz Animal.">
+
+    <!-- CSS EN EL MISMO ORDEN QUE ADOPCIONES.HTML -->
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+    <link rel="stylesheet" href="../css/header-auth.css">
+
+</head>
+
+<body>
+    <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+    <div class="header-login-container" id="headerLoginContainer">
+        <a href="login.html" class="btn-login">
+            <span class="btn-login-icon">👤</span>
+            <span>Iniciar Sesión</span>
+        </a>
+    </div>
+    <!-- HEADER IDÉNTICO A ADOPCIONES.HTML -->
+    <header class="cabecera">
+        <div class="fila-header">
+            <div class="logo">
+                <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+            </div>
+            <div class="titulo">
+                <h1>Voz Animal</h1>
+                <p><strong>Adopta, cuida y ama.</strong></p>
+            </div>
+            <div class="audio">
+                <audio src="../sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+            </div>
+        </div>
+        <div class="encabezado-redes">
+            <a href="https://facebook.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook">
+            </a>
+            <a href="https://youtube.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok">
+            </a>
+        </div>
+    </header>
+
+    <!-- MENÚ IDÉNTICO A ADOPCIONES.HTML -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+            <li><a href="adopciones.html">Adopciones</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="donaciones.html">Donaciones</a></li>
+            <li><a href="visitas.html">Visitas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contacto-container">
+        <section class="info-contacto">
+            <h2>¿Dónde Estamos?</h2>
+            <p><strong>Dirección:</strong> Av. Esperanza 555, Huancayo, Perú.</p>
+            <p>Fácil acceso por transporte público, taxis y estacionamiento gratuito.</p>
+
+            <h3>Cómo Llegar</h3>
+            <p>Desde el centro: toma la <strong>Ruta Verde</strong> o usa transporte público.</p>
+            <p>Desde otros lugares: recomendamos taxi o transporte privado.</p>
+
+            <h3>Ubícanos</h3>
+            <p>Contamos con rutas señalizadas, senderos y zonas recreativas. El mapa digital está disponible en nuestra
+                web.</p>
+
+            <h3>Horarios de Atención</h3>
+            <p><strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM</p>
+            <p><strong>Sábados:</strong> 10:00 AM - 4:00 PM</p>
+            <p><strong>Domingos:</strong> Cerrado</p>
+        </section>
+
+        <section class="formulario-contacto">
+            <h2>Contáctanos</h2>
+            <form id="formulario-contacto" action="#" method="post">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+                <label for="telefono">Teléfono (opcional):</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="999 999 999">
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5"
+                    placeholder="Escribe tu mensaje aquí... ¿En qué podemos ayudarte?" required></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+
+        <section class="mapa-contacto">
+            <h2>Ubicación en el Mapa</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.842172581952!2d-75.20422878479187!3d-12.068369346051022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910db809c7ff4e3f%3A0xf8a04d9446bb184e!2sAv.%20Esperanza%20555%2C%20Huancayo%2C%20Jun%C3%ADn!5e0!3m2!1ses!2spe!4v1684371728279!5m2!1ses!2spe"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación Voz Animal">
+            </iframe>
+        </section>
+    </main>
+
+    <!-- ALIADOS -->
+    <aside class="aliados">
+        <h2>Aliados y Recursos</h2>
+        <ul>
+            <li><a href="#" target="_blank">Ministerio de Agricultura</a></li>
+            <li><a href="#" target="_blank">SENASA</a></li>
+            <li><a href="#" target="_blank">Animales Libres</a></li>
+            <li><a href="#" target="_blank">Refugios Perú</a></li>
+        </ul>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer class="footer-contacto">
+        <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+        <p>Sede Central: Av. Esperanza 555, Huancayo, Perú.</p>
+        <p>Teléfonos: (01) 0000000 - (01) 0000000</p>
+        <p>Email: info@vozanimal.org</p>
+    </footer>
+    <script src="../js/contacto.js"></script>
+    <script src="../js/contactoTicket.js"></script>
+        <script src="../js/header-auth.js"></script>
+
+
+</body>
+
+</html>

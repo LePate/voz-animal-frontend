@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Voz Animal - Nuestros Peludos</title>
+    <link rel="icon" href="img/logo_voz_animal.png.jpg" type="image/png" />
+    <meta name="author" content="Voz Animal">
+    <meta name="description"
+        content="Conoce a los animales que ya encontraron un hogar y a aquellos que esperan ansiosamente una familia.">
+    <meta name="keywords"
+        content="adopción de mascotas, perros, gatos, refugio animal, animales adoptados, buscar hogar, Voz Animal">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../css/baucher.css">
+    <link rel="stylesheet" href="../js/baucher.js">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/header-auth.css">
+
+</head>
+
+<body>
+    <header class="cabecera">
+        <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+        <div class="header-login-container" id="headerLoginContainer">
+            <a href="login.html" class="btn-login">
+                <span class="btn-login-icon">👤</span>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+        <div class="fila-header flex-horizontal">
+            <div class="logo">
+                <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+            </div>
+
+            <div class="titulo">
+                <h1>Voz Animal</h1>
+                <p class="letras-espaciadas mayusculas"><strong>Adopta, cuida y ama.</strong></p>
+            </div>
+
+            <div class="audio">
+                <audio src="sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+            </div>
+        </div>
+
+        <div class="encabezado-redes">
+            <a href="https://facebook.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook"></a>
+            <a href="https://youtube.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube"></a>
+            <a href="https://instagram.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img
+                    src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok"></a>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+            <li><a href="adopciones.html">Adopciones</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="donaciones.html">Donaciones</a></li>
+            <li><a href="visitas.html">Visitas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+
+        </ul>
+    </nav>
+    <main class="contenido-adopciones">
+        <section class="historias-adopcion">
+            <h1 class="capitalize">🐾 Conoce a Nuestros Amigos Peludos</h1>
+            <p class="introduccion-historias">Aquí te presentamos a algunos de los maravillosos animales que forman
+                parte de la familia Voz Animal. Algunos ya disfrutan de un hogar feliz, mientras que otros esperan con
+                ilusión encontrar el suyo. ¡Anímate a cambiar una vida!</p>
+
+            <div class="animales-grid-container">
+
+                <article class="animal-card adoptado-card imagen-destacada">
+                    <img src="../img/perro5.jpg" alt="Max, perro mestizo adoptado felizmente">
+                    <h3>Max (Mestizo)</h3>
+                    <p><strong>Características:</strong> Macho, 2 años, mediano, mestizo, castrado. Juguetón y amigable.
+                    </p>
+                    <p class="historia"><strong>Su nueva vida:</strong> Max es un dulce perrito que encontró una familia
+                        maravillosa. Ahora es el rey de la casa, muy dócil, amoroso, y sociable con humanos y otros
+                        animales. Disfruta de largos paseos y siestas al sol.</p>
+                    <span class="estado-adopcion adoptado">¡Adoptado!</span>
+                </article>
+
+                <article class="animal-card adoptado-card">
+                    <img src="../img/perro6.jpg" alt="Shaka, perra adoptada y querida">
+                    <h3>Shaka</h3>
+                    <p><strong>Características:</strong> Hembra, 4 años, mediana, 17 kilos. Dócil, sociable y cariñosa.
+                        Sana y esterilizada.</p>
+                    <p class="historia"><strong>Su nueva vida:</strong> Shaka es una perrita encantadora que ahora tiene
+                        un hogar lleno de afecto. Se adaptó rápidamente, le encanta jugar en el jardín y es muy amorosa
+                        con su nueva familia. ¡Una verdadera alegría!</p>
+                    <span class="estado-adopcion adoptado">¡Adoptada!</span>
+                </article>
+
+                <article class="animal-card adoptado-card imagen-destacada">
+                    <img src="../img/gato2.jpg" alt="Gaspar, gato adoptado y consentido">
+                    <h3>Gaspar</h3>
+                    <p><strong>Características:</strong> Macho, 2 años, mediano, 5 kilos. Tranquilo, sociable y dócil.
+                        Sano y castrado.</p>
+                    <p class="historia"><strong>Su nueva vida:</strong> Tras ser rescatado y recuperarse, Gaspar
+                        encontró una familia que lo adora. Es muy obediente y relajado. Disfruta de una cama cómoda,
+                        muchos mimos y sus siestas al sol. ¡Su transformación ha sido increíble!</p>
+                    <span class="estado-adopcion adoptado">¡Adoptado!</span>
+                </article>
+
+                <article class="animal-card buscando-hogar-card">
+                    <img src="../img/perro1.jpg" alt="Jean, perro mestizo buscando hogar">
+                    <h3>Antony</h3>
+                    <p><strong>Características:</strong> Macho, 2 años, Mestizo, Esterilizado. Amigable y juguetón.</p>
+                    <p class="buscando-texto"><strong>¡Buscando un hogar amoroso!</strong> Antony es un compañero leal y
+                        lleno de energía, listo para llenar tu vida de alegría. ¿Quieres ser su familia?</p>
+                    <a href="contacto.html?interes=Jean" class="btn-adoptame">¡Quiero conocer a Antony!</a>
+                    <span class="estado-adopcion en-adopcion">En Adopción</span>
+                </article>
+
+                <article class="animal-card buscando-hogar-card">
+                    <img src="../img/perro2.jpeg" alt="Luna, perra Beagle buscando hogar">
+                    <h3>Luna</h3>
+                    <p><strong>Características:</strong> Hembra, 1 año, Beagle, Esterilizada. Perfecta para niños.</p>
+                    <p class="buscando-texto"><strong>¡Lista para encontrar su familia!</strong> Luna es una dulzura,
+                        ideal para un hogar con niños. Le encantan los mimos y los juegos. ¡Dale una oportunidad!</p>
+                    <a href="contacto.html?interes=Luna" class="btn-adoptame">¡Quiero conocer a Luna!</a>
+                    <span class="estado-adopcion en-adopcion">En Adopción</span>
+                </article>
+
+                <article class="animal-card buscando-hogar-card">
+                    <img src="../img/perro3.jpeg" alt="Max, perro Labrador buscando hogar">
+                    <h3>Max (Labrador)</h3>
+                    <p><strong>Características:</strong> Macho, 3 años, Labrador. Tranquilo, obediente y recuperado.</p>
+                    <p class="buscando-texto"><strong>¡Esperando una segunda oportunidad!</strong> Max es un perro noble
+                        y sereno, perfecto para un ambiente tranquilo. Ya está recuperado y listo para dar y recibir
+                        mucho amor.</p>
+                    <a href="contacto.html?interes=MaxLabrador" class="btn-adoptame">¡Quiero conocer a Max!</a>
+                    <span class="estado-adopcion en-adopcion">En Adopción</span>
+                </article>
+
+                <article class="animal-card buscando-hogar-card">
+                    <img src="../img/perro4.jpg" alt="Canela, perra Pastor Peruano buscando hogar">
+                    <h3>Canela</h3>
+                    <p><strong>Características:</strong> Hembra, 4 años, Pastor Peruano, Vacunada. Protectora y fiel.
+                    </p>
+                    <p class="buscando-texto"><strong>¡Busca un corazón leal!</strong> Canela es una perrita
+                        increíblemente fiel y protectora que sueña con un hogar donde pueda entregar todo su cariño.
+                        ¿Serás tú?</p>
+                    <a href="contacto.html?interes=Canela" class="btn-adoptame">¡Quiero conocer a Canela!</a>
+                    <span class="estado-adopcion en-adopcion">En Adopción</span>
+
+
+                </article>
+
+
+            </div>
+        </section>
+    </main>
+
+    <hr>
+
+    <body>
+        <div class="contenedor">
+            <h1>Generar Baucher de Adopción</h1>
+            <form id="formulario">
+                <label>Nombre del adoptante:</label>
+                <input type="text" id="adoptante" required><br>
+
+                <label>Mascota seleccionada:</label>
+                <select id="mascota" required>
+                    <option value="Max (Labrador)">Max (Labrador)</option>
+                    <option value="Luna (Gato)">Luna (Gato)</option>
+                    <option value="Rocky (Bulldog)">Rocky (Bulldog)</option>
+                    <option value="Shaka">Shaka</option>
+
+                </select><br>
+
+                <label>Fecha de adopción:</label>
+                <input type="date" id="fecha" required><br>
+
+                <label>Horario disponible:</label>
+                <select id="horario" required>
+                    <option value="9:00 am">9:00 am</option>
+                    <option value="11:00 am">11:00 am</option>
+                    <option value="3:00 pm">3:00 pm</option>
+                </select><br>
+
+                <button type="submit">Generar Baucher</button>
+            </form>
+
+            <div id="baucher" class="baucher-panel"></div>
+
+            <button onclick="descargarPDF()">Descargar PDF</button>
+        </div>
+
+        <script src="baucher.js"></script>
+
+
+    </body>
+    <aside>
+        <h3>Aliados y Recursos</h3>
+        <ul>
+            <li><a href="https://www.gob.pe/minagri" target="_blank">Ministerio de Agricultura</a></li>
+            <li><a href="https://www.senasa.gob.pe/" target="_blank">SENASA</a></li>
+            <li><a href="https://www.facebook.com/AnimalesLibresDeCrueldadYAbandonoPeru/" target="_blank">Animales
+                    Libres</a></li>
+            <li><a href="https://www.reddeanimalistasperu.org/refugios" target="_blank">Refugios Perú</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+        <p>SEDE CENTRAL.</p>
+        <p>Dirección: Av. Esperanza 555, Huancayo, Perú.</p>
+        <p>Teléfonos: (01) 0000000 - (01) 0000000.</p>
+    </footer>
+      <script src="../js/header-auth.js"></script>
+
+</body>
+
+</html>

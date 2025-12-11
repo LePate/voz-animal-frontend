@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Visitas - Voz Animal</title>
+  <link rel="icon" href="img/logo_voz_animal.png.jpg" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Utiliza nuestras herramientas para planificar tu visita y el cuidado de tu mascota.">
+  <!-- Enlaces a tus archivos CSS originales -->
+  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/contacto.css">
+  <link rel="stylesheet" href="../css/menu.css">
+  <link rel="stylesheet" href="../css/header-auth.css">
+
+  <style>
+    /* Estilos Generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .cabecera {
+      background-color: #f0f8ff;
+      padding: 10px 20px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .fila-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+    }
+
+    .titulo {
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .titulo h1 {
+      margin: 5px 0;
+      color: #2c3e50;
+      font-size: 2em;
+    }
+
+    .titulo p {
+      color: #34495e;
+      font-size: 0.9em;
+    }
+
+    .audio audio {
+      width: 250px;
+      max-width: 100%;
+    }
+
+    .encabezado-redes {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px 0;
+    }
+
+    .encabezado-redes img {
+      width: 25px;
+      height: 25px;
+    }
+
+    .menu {
+      background-color: #e3f2fd;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #dce1e6;
+    }
+
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      color: #1976d2;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: #f8f9fa;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Estilos para las tarjetas de las calculadoras */
+    .tarjeta {
+      max-width: 500px;
+      margin: 25px auto;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e9ecef;
+    }
+
+    main .titulo-principal {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.2em;
+      color: #2c3e50;
+    }
+
+    main .subtitulo {
+      text-align: center;
+      margin-top: 0;
+      font-size: 1.6em;
+      color: #375a7f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .tarjeta .texto {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .tarjeta label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .tarjeta input,
+    .tarjeta select {
+      display: block;
+      width: 100%;
+      margin: 8px 0 15px 0;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .tarjeta button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-visita {
+      background-color: #28a745;
+    }
+
+    .btn-visita:hover {
+      background-color: #218838;
+    }
+
+    .btn-cuidado {
+      background-color: #007bff;
+    }
+
+    .btn-cuidado:hover {
+      background-color: #0056b3;
+    }
+
+    .tarjeta .resultado {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border-radius: 8px;
+      color: #333;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .checklist-item label {
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+    .btn-generar-plan {
+      display: block;
+      width: 90%;
+      max-width: 450px;
+      margin: 40px auto;
+      padding: 15px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: white;
+      background-color: #5cb85c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .btn-generar-plan:hover {
+      background-color: #4cae4c;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="cabecera">
+    <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+        <div class="header-login-container" id="headerLoginContainer">
+            <a href="login.html" class="btn-login">
+                <span class="btn-login-icon">👤</span>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+    <div class="fila-header">
+      <div class="logo">
+        <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+      </div>
+      <div class="titulo">
+        <h1>Voz Animal</h1>
+        <p><strong>Adopta, cuida y ama.</strong></p>
+      </div>
+      <div class="audio">
+        <audio src="sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+      </div>
+    </div>
+    <nav class="encabezado-redes">
+      <a href="https://facebook.com" target="_blank"><img src="https://www.svgrepo.com/show/475647/facebook-color.svg"
+          alt="Facebook"></a>
+      <a href="https://youtube.com" target="_blank"><img src="https://www.svgrepo.com/show/475700/youtube-color.svg"
+          alt="YouTube"></a>
+      <a href="https://instagram.com" target="_blank"><img src="https://www.svgrepo.com/show/452229/instagram-1.svg"
+          alt="Instagram"></a>
+      <a href="https://www.tiktok.com" target="_blank"><img
+          src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok"></a>
+    </nav>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+      <li><a href="adopciones.html">Adopciones</a></li>
+      <li><a href="voluntariado.html">Voluntariado</a></li>
+      <li><a href="donaciones.html">Donaciones</a></li>
+      <li><a href="visitas.html">Visitas</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1 class="titulo-principal">Herramientas de Visita y Cuidado</h1>
+
+    <!-- Tarjeta 1: Planificador de Visitas -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Planificador de Visitas</h2>
+      <p class="texto">Calcula cuántas visitas se pueden programar al día.</p><label for="duracion">Duración
+        (minutos):</label><input type="number" id="duracion" placeholder="Ej. 30"><button class="btn-visita"
+        onclick="calcularVisitas()">Calcular Visitas</button>
+      <p id="resultadoVisitas" class="resultado">El resultado aparecerá aquí.</p>
+    </div>
+
+    <!-- Tarjeta 2: Cuidado Físico -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Cuidado Físico</h2><label for="nombreMascota">Nombre:</label><input type="text"
+        id="nombreMascota" placeholder="Ej. Fido"><label for="pesoRutina">Peso (kg):</label><input type="number"
+        id="pesoRutina" placeholder="Ej. 10"><label for="juegoRutina">Horas de juego:</label><input type="number"
+        id="juegoRutina" placeholder="Ej. 2"><button class="btn-cuidado" onclick="analizarRutina()">Analizar
+        Rutina</button>
+      <p id="resultadoRutina" class="resultado"></p>
+    </div>
+
+    <!-- Tarjeta 3: Planificador de Salud -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Planificador de Salud</h2><label for="edadMascota">Edad (años):</label><input type="number"
+        id="edadMascota" placeholder="Ej. 4"><label for="tipoActividad">Actividad:</label><select id="tipoActividad">
+        <option value="calmada">Calmada</option>
+        <option value="moderada">Moderada</option>
+        <option value="alta">Alta</option>
+      </select><button class="btn-cuidado" onclick="planificarSalud()">Recomendar</button>
+      <p id="resultadoSalud" class="resultado"></p>
+    </div>
+
+    <!-- Tarjeta 4: Juegos y Estímulo Mental -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Juegos y Estímulo Mental</h2><label for="tipoMascotaJuego">Especie:</label><select
+        id="tipoMascotaJuego">
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+      </select><label for="nivelEnergia">Energía:</label><select id="nivelEnergia">
+        <option value="baja">Baja</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+      </select><button class="btn-cuidado" onclick="sugerirJuegos()">Sugerir Juegos</button>
+      <p id="resultadoJuegos" class="resultado"></p>
+    </div>
+
+    <!-- Tarjeta 5: Calendario de Vacunación (NUEVO) -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Calendario de Vacunación</h2><label for="especieVacuna">Especie:</label><select
+        id="especieVacuna">
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+      </select><label for="edadVacuna">Edad (meses):</label><input type="number" id="edadVacuna"
+        placeholder="Ej. 3"><button class="btn-cuidado" onclick="calcularVacunas()">Ver Próximas Vacunas</button>
+      <p id="resultadoVacunas" class="resultado"></p>
+    </div>
+
+    <!-- Tarjeta 6: Checklist Esencial -->
+    <div class="tarjeta">
+      <h2 class="subtitulo">Checklist Esencial</h2>
+      <div class="checklist-item"><input type="checkbox" id="check-collar"><label for="check-collar">Collar y
+          Placa</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check-cama"><label for="check-cama">Cama Cómoda</label>
+      </div>
+      <div class="checklist-item"><input type="checkbox" id="check-platos"><label for="check-platos">Platos de
+          Comida/Agua</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check-juguetes"><label for="check-juguetes">Juguetes
+          Seguros</label></div>
+    </div>
+
+    <hr>
+    <button id="generarPlanPDF" class="btn-generar-plan">Generar Plan de Cuidado en PDF</button>
+  </main>
+
+  <footer>
+    <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="visitas.js"></script>
+</body>
+
+</html>

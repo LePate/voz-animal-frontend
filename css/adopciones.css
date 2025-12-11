@@ -1,0 +1,77 @@
+body {
+    background-color: #d3e8f6;
+    font-family: Arial, sans-serif;
+}
+
+.titulo-adopciones {
+    text-align: center;
+    background-color: lightgray;
+}
+
+.lista-animales {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.tarjeta {
+    display: flex;
+    background-color: #084c61;
+    border-radius: 15px;
+    padding: 15px;
+    color: #ffffff;
+    align-items: center;
+    border: 4px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* ✅ Marco general alrededor de toda la tarjeta */
+}
+
+.imagen-info {
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 20px;
+    width: 220px;
+    text-align: center;
+    color: #333;
+    border: 3px solid #ff9900;
+    /* ✅ Marco naranja alrededor de la imagen */
+}
+
+.imagen-info img {
+    width: 200px;
+    height: 160px;
+    border-radius: 8px;
+    border: 2px solid #ff6600;
+    /* ✅ Borde adicional directamente en la imagen */
+}
+
+.nombre-animal {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 3px solid #ffa726;
+    /* ✅ Marco naranja alrededor de la descripción */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #5eb1ef;
+}
+
+.texto {
+    background-color: #b3e5fc;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    color: #003349;
+    font-weight: 500;
+    border: 1px solid #0277bd;
+    /* ✅ Pequeño borde para cada texto */
+}

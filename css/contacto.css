@@ -1,0 +1,288 @@
+/* ===================================
+   CONTACTO.CSS - VOZ ANIMAL
+   Estilos específicos para contacto.html
+   =================================== */
+
+/* ============================================
+   1. CONTENEDOR PRINCIPAL DE CONTACTO
+   ============================================ */
+.contacto-container {
+    display: grid;  /* Usa sistema de rejilla */
+    grid-template-columns: 1fr 1fr;/* 2 columnas iguales (50% cada una) */
+    gap: 2rem;      /* Espacio entre tarjetas: 32px */
+    padding: 2rem;   /* Espacio interno: 32px */
+    max-width: 1400px;  /* Ancho máximo del contenedor */
+    margin: 0 auto;   /* Centrar horizontalmente */
+    background-color: #f7f9fa;  /* Fondo gris claro */
+}
+
+/* ============================================
+   2. SECCIONES DE CONTACTO
+   ============================================ */
+.info-contacto,
+.formulario-contacto,
+.mapa-contacto {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 2rem;  /* Espacio interno: 32px */
+    border-radius: 16px;  /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);  /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+}
+
+.info-contacto:hover,
+.formulario-contacto:hover,
+.mapa-contacto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Títulos de secciones */
+.info-contacto h2,
+.formulario-contacto h2,
+.mapa-contacto h2 {
+    color: #375a7f;
+    margin-bottom: 1.5rem;
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: 3px solid #5cb85c;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.info-contacto h3 {
+    color: #2c3e50;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.info-contacto p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 1.05em;
+}
+
+.info-contacto p strong {
+    color: #375a7f;
+    font-weight: 700;
+}
+
+/* ============================================
+   3. FORMULARIO DE CONTACTO
+   ============================================ */
+.formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contacto label {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 0.3rem;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    padding: 0.9rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    outline: none;
+    border-color: #5cb85c;
+    box-shadow: 0 0 0 3px rgba(92, 184, 92, 0.1);
+}
+
+.formulario-contacto textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.formulario-contacto button {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: none;
+    background: linear-gradient(135deg, #5cb85c 0%, #4cae4c 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.formulario-contacto button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
+}
+
+.formulario-contacto button:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   4. MAPA DE CONTACTO
+   ============================================ */
+.mapa-contacto {
+    grid-column: 1 / -1;/* Ocupa desde columna 1 hasta la última */
+}
+
+.mapa-contacto iframe {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   5. SECCIÓN DE ALIADOS
+   ============================================ */
+.aliados {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.aliados h2 {
+    color: #2c3e50;
+    font-size: 1.8em;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    border-bottom: 3px solid #375a7f;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.aliados ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.aliados li {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aliados li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.aliados a {
+    text-decoration: none;
+    color: #375a7f;
+    font-weight: 600;
+    display: block;
+    font-size: 1.05em;
+}
+
+.aliados a:hover {
+    color: #5cb85c;
+}
+
+/* ============================================
+   6. FOOTER
+   ============================================ */
+.footer-contacto {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-top: 40px;
+}
+
+.footer-contacto p {
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   7. RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+    .contacto-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .info-contacto h2,
+    .formulario-contacto h2,
+    .mapa-contacto h2 {
+        font-size: 1.5em;
+    }
+
+    .aliados ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-container {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .info-contacto,
+    .formulario-contacto,
+    .mapa-contacto {
+        padding: 1.5rem;
+    }
+
+    .aliados {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/* ============================================
+   8. ANIMACIONES
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-contacto,
+.formulario-contacto,
+.mapa-contacto {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.info-contacto {
+    animation-delay: 0.1s;
+}
+
+.formulario-contacto {
+    animation-delay: 0.2s;
+}
+
+.mapa-contacto {
+    animation-delay: 0.3s;
+}

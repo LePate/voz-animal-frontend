@@ -1,0 +1,135 @@
+    .tarjeta {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fefefe;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    main h2 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .texto {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+        .mensaje-error {
+          color: red;
+          font-weight: bold;
+          text-align: center;
+        }
+
+    .tarjeta .descripcion input,
+    .tarjeta .descripcion select {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .tarjeta .descripcion button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #28a745;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tarjeta .descripcion button:hover {
+      background-color: #218838;
+    }
+
+    .tarjeta .descripcion #resultado {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .util-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 130px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .util-card button {
+      width: auto;
+      align-self: center;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .util-card button:hover {
+      background-color: #0056b3;
+    }
+
+    .util-card p,
+    .util-card #presupuestoTotal {
+      background-color: #e9ecef;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+      color: #333;
+    }
+
+    #presupuestoTotal {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ced4da;
+      font-size: 16px;
+    }
+
+    .presupuesto-grupo h3 {
+      font-size: 1.2em;
+      margin: 5px 0 10px 0;
+      color: #0056b3;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 8px;
+      text-align: center;
+    }

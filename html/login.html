@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Voz Animal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      min-height: 550px;
+    }
+
+    .info-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .info-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .info-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .paw-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #555;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .toggle-link {
+      color: #667eea;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .toggle-link:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      display: none;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert.show {
+      display: block;
+    }
+
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+      color: #667eea;
+      font-size: 0.9rem;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .info-section {
+        padding: 40px 30px;
+      }
+
+      .form-section {
+        padding: 40px 30px;
+      }
+
+      .info-section h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sección de Información -->
+    <div class="info-section">
+      <div class="paw-icon">🐾</div>
+      <h1>VOZ ANIMAL</h1>
+      <p>Adopta, cuida y ama. Únete a nuestra comunidad y dale una segunda oportunidad a un amigo peludo.</p>
+    </div>
+
+    <!-- Sección de Formularios -->
+    <div class="form-section">
+      <!-- Alerta de mensajes -->
+      <div id="alert" class="alert"></div>
+      <div id="loading" class="loading">Procesando...</div>
+
+      <!-- Formulario de Login -->
+      <div id="loginForm" class="form-container active">
+        <h2>Iniciar Sesión</h2>
+        <p class="subtitle">Bienvenido de nuevo</p>
+
+        <form id="loginFormElement">
+          <div class="form-group">
+            <label for="loginEmail">Correo Electrónico</label>
+            <input type="email" id="loginEmail" name="email" placeholder="tu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Contraseña</label>
+            <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+          </div>
+
+          <button type="submit" class="btn">Iniciar Sesión</button>
+        </form>
+
+        <p class="toggle-text">
+          ¿No tienes cuenta? 
+          <a class="toggle-link" onclick="toggleForms()">Regístrate aquí</a>
+        </p>
+      </div>
+
+      <!-- Formulario de Registro -->
+      <div id="registerForm" class="form-container">
+        <h2>Crear Cuenta</h2>
+        <p class="subtitle">Únete a nuestra comunidad</p>
+
+        <form id="registerFormElement">
+          <div class="form-group">
+            <label for="registerName">Nombre Completo</label>
+            <input type="text" id="registerName" name="nombre_completo" placeholder="Juan Pérez" required>
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail">Correo Electrónico</label>
+            <input type="email" id="registerEmail" name="email" placeholder="tu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword">Contraseña</label>
+            <input type="password" id="registerPassword" name="password" placeholder="Mínimo 6 caracteres" required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label for="registerPhone">Teléfono (opcional)</label>
+            <input type="tel" id="registerPhone" name="telefono" placeholder="987654321">
+          </div>
+
+          <button type="submit" class="btn">Registrarse</button>
+        </form>
+
+        <p class="toggle-text">
+          ¿Ya tienes cuenta? 
+          <a class="toggle-link" onclick="toggleForms()">Inicia sesión aquí</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3000/api';
+
+    // Alternar entre formularios
+    function toggleForms() {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      
+      loginForm.classList.toggle('active');
+      registerForm.classList.toggle('active');
+      
+      hideAlert();
+    }
+
+    // Mostrar alerta
+    function showAlert(message, type = 'error') {
+      const alert = document.getElementById('alert');
+      alert.textContent = message;
+      alert.className = `alert alert-${type} show`;
+      
+      setTimeout(() => hideAlert(), 5000);
+    }
+
+    // Ocultar alerta
+    function hideAlert() {
+      const alert = document.getElementById('alert');
+      alert.classList.remove('show');
+    }
+
+    // Mostrar/ocultar loading
+    function toggleLoading(show) {
+      const loading = document.getElementById('loading');
+      loading.classList.toggle('show', show);
+    }
+
+    // Manejar Login
+    document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlert();
+      toggleLoading(true);
+
+      const formData = {
+        email: document.getElementById('loginEmail').value,
+        password: document.getElementById('loginPassword').value
+      };
+
+      try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Guardar token y datos del usuario
+          localStorage.setItem('token', data.data.token);
+          localStorage.setItem('user', JSON.stringify(data.data.user));
+          
+          showAlert('¡Inicio de sesión exitoso! Redirigiendo...', 'success');
+          
+          // Redirigir según el rol
+          setTimeout(() => {
+            if (data.data.user.rol === 'admin') {
+              window.location.href = 'admin-dashboard.html';
+            } else {
+              window.location.href = 'user-dashboard.html';
+            }
+          }, 1500);
+        } else {
+          showAlert(data.message || 'Error al iniciar sesión');
+        }
+      } catch (error) {
+        showAlert('Error de conexión. Verifica que el servidor esté corriendo.');
+        console.error('Error:', error);
+      } finally {
+        toggleLoading(false);
+      }
+    });
+
+    // Manejar Registro
+    document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideAlert();
+      toggleLoading(true);
+
+      const formData = {
+        nombre_completo: document.getElementById('registerName').value,
+        email: document.getElementById('registerEmail').value,
+        password: document.getElementById('registerPassword').value,
+        telefono: document.getElementById('registerPhone').value || null
+      };
+
+      try {
+        const response = await fetch(`${API_URL}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Guardar token y datos del usuario
+          localStorage.setItem('token', data.data.token);
+          localStorage.setItem('user', JSON.stringify(data.data.user));
+          
+          showAlert('¡Registro exitoso! Redirigiendo...', 'success');
+          
+          // Redirigir al dashboard de usuario
+          setTimeout(() => {
+            window.location.href = 'user-dashboard.html';
+          }, 1500);
+        } else {
+          showAlert(data.message || 'Error al registrarse');
+        }
+      } catch (error) {
+        showAlert('Error de conexión. Verifica que el servidor esté corriendo.');
+        console.error('Error:', error);
+      } finally {
+        toggleLoading(false);
+      }
+    });
+
+    // Verificar si ya hay sesión iniciada
+    window.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('token');
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+      if (token && user.rol) {
+        // Ya hay sesión, redirigir
+        if (user.rol === 'admin') {
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          window.location.href = 'user-dashboard.html';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

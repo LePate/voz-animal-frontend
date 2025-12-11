@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Voz Animal - Adopta una vida</title>
+    <link rel="icon" href="../img/logo_voz_animal.png.jpg" type="image/png" />
+    <meta name="author" content="Voz Animal">
+    <meta name="description" content="Adopta, cuida y ama. Encuentra a tu nuevo mejor amigo en Voz Animal.">
+    <meta name="keywords"
+        content="adopción de mascotas, perros, gatos, refugio animal, cuidado de animales, Voz Animal">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/donaciones.css">
+    <link rel="stylesheet" href="../css/header-auth.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="cabecera">
+        <!-- BOTÓN DE LOGIN / INFO USUARIO -->
+        <div class="header-login-container" id="headerLoginContainer">
+            <a href="login.html" class="btn-login">
+                <span class="btn-login-icon">👤</span>
+                <span>Iniciar Sesión</span>
+            </a>
+        </div>
+        <div class="fila-header flex-horizontal">
+            <div class="logo">
+                <img src="../img/logo_voz_animal.png.jpg" alt="Logo Voz Animal">
+            </div>
+            <div class="titulo">
+                <h1>Voz Animal</h1>
+                <p class="letras-espaciadas mayusculas"><strong>Adopta, cuida y ama.</strong></p>
+            </div>
+            <div class="audio">
+                <audio src="sound/Río Roma - Ángel de Cuatro Patas .mp3" preload="auto" loop controls></audio>
+            </div>
+        </div>
+
+        <div class="encabezado-redes">
+            <a href="https://facebook.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook">
+            </a>
+            <a href="https://youtube.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" alt="TikTok">
+            </a>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="listadeAnimales.html">Lista de Animales</a></li>
+            <li><a href="adopciones.html">Adopciones</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="donaciones.html">Donaciones</a></li>
+            <li><a href="visitas.html">Visitas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- INICIO DEL CONTENIDO DE DONACIONES -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Dona en alimentos para los animales refugiados</h1>
+
+        <form id="form-donacion" class="card p-4 shadow-sm">
+
+            <!-- Comida para Perros -->
+            <div class="mb-4 seccion">
+                <h5>Comida para Perros</h5>
+                <label for="comidaPerro" class="form-label">Seleccione la marca:</label>
+                <select id="comidaPerro" class="form-select">
+                    <option value="0">No donar - S/ 0.00 por kg</option>
+                    <option value="3.00">Ricocan - S/ 3.00 por kg</option>
+                    <option value="5.50">Propac - S/ 5.50 por kg</option>
+                    <option value="7.80">Mimaskot - S/ 7.80 por kg</option>
+                    <option value="5.90">Dog chow - S/ 5.90 por kg</option>
+                </select>
+                <input type="number" id="cantidadPerro" class="form-control mt-2" min="0" step="0.1"
+                    placeholder="Cantidad (kg)">
+            </div>
+
+            <!-- Comida para Gatos -->
+            <div class="mb-4 seccion">
+                <h5>Comida para Gatos</h5>
+                <label for="comidaGato" class="form-label">Seleccione la marca:</label>
+                <select id="comidaGato" class="form-select">
+                    <option value="0">No donar - S/ 0.00 por kg</option>
+                    <option value="4.50">Super cat - S/ 4.50 por kg</option>
+                    <option value="4.00">Ricocat - S/ 4.00 por kg</option>
+                    <option value="4.60">Cunipic - S/ 4.60 por kg</option>
+                    <option value="3.60">Farmina - S/ 3.60 por kg</option>
+                </select>
+                <input type="number" id="cantidadGato" class="form-control mt-2" min="0" step="0.1"
+                    placeholder="Cantidad (kg)">
+            </div>
+
+            <!-- Botones -->
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" onclick="calcularTotal()">Calcular</button>
+                <button type="button" class="btn btn-success" onclick="generarPDF()">
+                    📄 Generar Comprobante PDF
+                </button>
+            </div>
+
+            <!-- Resultado -->
+            <div class="mt-4">
+                <label for="costoTotal" class="form-label">Costo total (S/):</label>
+                <input type="text" id="costoTotal" class="form-control" readonly>
+            </div>
+
+        </form>
+    </div>
+    <!-- FIN DEL CONTENIDO DE DONACIONES -->
+
+    <hr>
+
+    <aside>
+        <h3>Aliados y Recursos</h3>
+        <ul>
+            <li><a href="https://www.gob.pe/minagri" target="_blank">Ministerio de Agricultura</a></li>
+            <li><a href="https://www.senasa.gob.pe/" target="_blank">SENASA</a></li>
+            <li><a href="https://www.facebook.com/AnimalesLibresDeCrueldadYAbandonoPeru/" target="_blank">Animales
+                    Libres</a></li>
+            <li><a href="https://www.reddeanimalistasperu.org/refugios" target="_blank">Refugios Perú</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>©2025 - www.vozanimal.org. Todos los derechos reservados.</p>
+        <p>SEDE CENTRAL.</p>
+        <p>Dirección: Av. Esperanza 555, Huancayo, Perú.</p>
+        <p>Teléfonos: (01) 0000000 - (01) 0000000.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ⭐ LIBRERÍAS PARA GENERAR PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Archivo JS separado -->
+    <script src="../js/donaciones.js"></script>
+        <script src="../js/header-auth.js"></script>
+
+</body>
+
+</html>
